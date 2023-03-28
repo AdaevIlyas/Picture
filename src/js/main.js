@@ -4,6 +4,8 @@ import forms from "./modules/forms";
 import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
 import showMoreStyles from "./modules/showMoreStyles";
+import calc from "./modules/calc";
+import filter from "./modules/filter";
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -19,4 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // showMoreStyles('.button-styles', '.styles-2');
   // взаимодействие с картинками через backend-часть
   showMoreStyles('.button-styles', '#styles .row');
+  // 
+  calc('#size', '#material', '#options', '.promocode', '.calc-price');
+  filter();
 });
