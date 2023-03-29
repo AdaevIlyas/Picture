@@ -1,22 +1,14 @@
 const filter = () => {
   const menu = document.querySelector('.portfolio-menu'),
     items = menu.querySelectorAll('li'),
-    btnAll = menu.querySelector('.all'),
-    btnLovers = menu.querySelector('.lovers'),
-    btnChef = menu.querySelector('.chef'),
-    btnGirl = menu.querySelector('.girl'),
-    btnGuy = menu.querySelector('.guy'),
-    btnGrandmother = menu.querySelector('.grandmother'),
-    btnGranddad = menu.querySelector('.granddad'),
     wrapper = document.querySelector('.portfolio-wrapper'),
-    markAll = wrapper.querySelectorAll('.all'),
-    markLovers = wrapper.querySelectorAll('.lovers'),
-    markChef = wrapper.querySelectorAll('.chef'),
-    markGirl = wrapper.querySelectorAll('.girl'),
-    markGuy = wrapper.querySelectorAll('.guy'),
-    no = document.querySelector('.portfolio-no');
+    markAll = wrapper.querySelectorAll('.all');
 
-  const typeFilter = (markType) => {
+  const typeFilter = (selector) => {
+    const markType = wrapper.querySelectorAll(selector),
+      no = document.querySelector('.portfolio-no');
+
+
     markAll.forEach(mark => {
       mark.style.display = 'none';
       mark.classList.remove('animated', 'fadeIn');
@@ -25,7 +17,7 @@ const filter = () => {
     no.style.display = 'none';
     no.classList.remove('animated', 'fadeIn');
 
-    if (markType) {
+    if (selector != '.granddad' && selector != '.grandmother') {
       markType.forEach(mark => {
         mark.style.display = 'block';
         mark.classList.add('animated', 'fadeIn');
@@ -36,34 +28,6 @@ const filter = () => {
     }
   };
 
-  btnAll.addEventListener('click', () => {
-    typeFilter(markAll);
-  });
-
-  btnLovers.addEventListener('click', () => {
-    typeFilter(markLovers);
-  });
-
-  btnChef.addEventListener('click', () => {
-    typeFilter(markChef);
-  });
-
-  btnGirl.addEventListener('click', () => {
-    typeFilter(markGirl);
-  });
-
-  btnGuy.addEventListener('click', () => {
-    typeFilter(markGuy);
-  });
-
-  btnGranddad.addEventListener('click', () => {
-    typeFilter();
-  });
-
-  btnGrandmother.addEventListener('click', () => {
-    typeFilter();
-  });
-
   menu.addEventListener('click', (e) => {
     let target = e.target;
 
@@ -71,6 +35,8 @@ const filter = () => {
       items.forEach(btn => btn.classList.remove('active'));
 
       target.classList.add('active');
+
+      typeFilter(`.${target.classList[0]}`);
     }
   });
 };
